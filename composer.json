@@ -1,0 +1,47 @@
+{
+    "name": "williamson/larawhatsapi",
+    "description": "A laravel Wrapper for WhatsApi",
+    "license": "MIT",
+    "keywords": [
+        "whatsapp",
+        "whatsapi",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Jonathan Williamson",
+            "email": "jonnywilliamson@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "mgp25/WhatsAPI-Official",
+                "version": "0.0.1",
+                "source": {
+                    "url": "https://github.com/mgp25/WhatsAPI-Official.git",
+                    "type": "git",
+                    "reference": "0.0.1"
+                },
+                "dist": {
+                    "url": "https://github.com/mgp25/WhatsAPI-Official/archive/master.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "thomasvargiu/tmv-whatsapi": "0.*",
+        "mgp25/WhatsAPI-Official": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Williamson\\Larawhatsapi\\": "src/"
+        },
+        "classmap": ["vendor/mgp25/WhatsAPI-Official/src"]
+    },
+    "minimum-stability": "stable"
+}
