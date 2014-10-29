@@ -28,8 +28,7 @@
     "autoload": {
         "psr-4": {
             "Williamson\\Larawhatsapi\\": "src/"
-        },
-        "classmap": ["src/","src/events"]
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
