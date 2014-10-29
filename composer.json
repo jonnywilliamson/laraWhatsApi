@@ -15,33 +15,21 @@
     ],
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "mgp25/WhatsAPI-Official",
-                "version": "0.0.1",
-                "source": {
-                    "url": "https://github.com/mgp25/WhatsAPI-Official.git",
-                    "type": "git",
-                    "reference": "0.0.1"
-                },
-                "dist": {
-                    "url": "https://github.com/mgp25/WhatsAPI-Official/archive/master.zip",
-                    "type": "zip"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/mgp25/WhatsAPI-Official.git"
         }
     ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*",
         "thomasvargiu/tmv-whatsapi": "0.*",
-        "mgp25/WhatsAPI-Official": "*"
+        "mgp25/whatsapi": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "Williamson\\Larawhatsapi\\": "src/"
         },
-        "classmap": ["vendor/mgp25/WhatsAPI-Official/src"]
+        "classmap": ["vendor/mgp25/whatsapi/src"]
     },
     "minimum-stability": "stable"
 }
