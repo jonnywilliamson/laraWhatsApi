@@ -29,7 +29,7 @@
         "psr-4": {
             "Williamson\\Larawhatsapi\\": "src/"
         },
-        "classmap": ["vendor/mgp25/whatsapi/src"]
+        "classmap": ["src/","src/events"]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
