@@ -83,14 +83,9 @@ At a later stage a registration feature using this package might become availabl
                 }
             ],
 
-    **Then change the end of the file from this**
+    **Now we need to add this non-packagist package first**
 
-        "minimum-stability": "stable",
-
-    **To this:**
-
-        "minimum-stability": "dev",
-        "prefer-stable": true
+        composer require mgp25/whatsapi:dev-master
 
     **Sorry about the extra work, hopefully in a few days we can remove this step.**
 
