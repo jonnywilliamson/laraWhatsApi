@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b2e3d87d5f274f165957106098db3da",
+    "hash": "5d80c0b6a7b0088fae84f0a979690821",
     "packages": [
         {
             "name": "illuminate/support",
@@ -55,20 +55,55 @@
             "time": "2014-09-12 21:42:43"
         },
         {
-            "name": "mgp25/WhatsAPI-Official",
-            "version": "0.0.1",
+            "name": "mgp25/whatsapi",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mgp25/WhatsAPI-Official.git",
-                "reference": "0.0.1"
+                "reference": "17d784c5adb3e2697b26562cff77fd9f5483045e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/mgp25/WhatsAPI-Official/archive/master.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/mgp25/WhatsAPI-Official/zipball/17d784c5adb3e2697b26562cff77fd9f5483045e",
+                "reference": "17d784c5adb3e2697b26562cff77fd9f5483045e",
+                "shasum": ""
             },
-            "type": "library"
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3"
+            },
+            "suggest": {
+                "williamson/larawhatsapi": "A laravel Wrapper for WhatsApi"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/",
+                    "src/events"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "role": "Contributers",
+                    "name": "WhatsApi Contributing Team",
+                    "homepage": "https://github.com/mgp25/WhatsAPI-Official/graphs/contributors"
+                }
+            ],
+            "description": "PHP Interface for WhatsApp Messenger",
+            "keywords": [
+                "TextMessage",
+                "WhatsApp",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/mgp25/WhatsAPI-Official/issues",
+                "wiki": "https://github.com/mgp25/WhatsAPI-Official/wiki",
+                "source": "https://github.com/mgp25/WhatsAPI-Official"
+            },
+            "time": "2014-10-29 07:31:20"
         },
         {
             "name": "thomasvargiu/tmv-whatsapi",
@@ -222,8 +257,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
+    "stability-flags": {
+        "mgp25/whatsapi": 20
+    },
+    "prefer-stable": true,
     "platform": {
         "php": ">=5.4.0"
     },

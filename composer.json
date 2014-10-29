@@ -23,7 +23,7 @@
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*",
         "thomasvargiu/tmv-whatsapi": "0.*",
-        "mgp25/whatsapi": "*"
+        "mgp25/whatsapi": "*@dev"
     },
     "autoload": {
         "psr-4": {
@@ -31,5 +31,6 @@
         },
         "classmap": ["vendor/mgp25/whatsapi/src"]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
