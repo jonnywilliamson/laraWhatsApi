@@ -72,8 +72,9 @@ At a later stage a registration feature using this package might become availabl
 
         cd whatsapiprojectdemo
 
-4. Require this laraWhatsApi package.
+4. Require the needed packages (enter each of these lines as a command).
 
+        composer require mgp25/whatsapi:@dev
         composer require williamson/larawhatsapi:dev-master --update-no-dev
 
 
