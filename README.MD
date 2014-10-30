@@ -72,23 +72,6 @@ At a later stage a registration feature using this package might become availabl
 
         cd whatsapiprojectdemo
 
-    **STEP 3.5 -  This is a temporary step until we get WhatsApi-Official established on  [https://packagist.org](https://packagist.org).**
-
-    You must edit ```composer.json``` file, and add this to just before the "requires" line:
-
-        "repositories": [
-                {
-                    "type": "vcs",
-                    "url": "https://github.com/mgp25/WhatsAPI-Official.git"
-                }
-            ],
-
-    **Now we need to add this non-packagist package first**
-
-        composer require mgp25/whatsapi:dev-master
-
-    **Sorry about the extra work, hopefully in a few days we can remove this step.**
-
 4. Require this laraWhatsApi package.
 
         composer require williamson/larawhatsapi:dev-master --update-no-dev

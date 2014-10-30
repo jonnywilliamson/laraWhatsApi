@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5d80c0b6a7b0088fae84f0a979690821",
+    "hash": "6150248306e1c16c027f3f5e2c263ed4",
     "packages": [
         {
             "name": "illuminate/support",
@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mgp25/WhatsAPI-Official.git",
-                "reference": "17d784c5adb3e2697b26562cff77fd9f5483045e"
+                "reference": "69a93eb7ad0875cc68efa3ca982f0f2f52124a66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mgp25/WhatsAPI-Official/zipball/17d784c5adb3e2697b26562cff77fd9f5483045e",
-                "reference": "17d784c5adb3e2697b26562cff77fd9f5483045e",
+                "url": "https://api.github.com/repos/mgp25/WhatsAPI-Official/zipball/69a93eb7ad0875cc68efa3ca982f0f2f52124a66",
+                "reference": "69a93eb7ad0875cc68efa3ca982f0f2f52124a66",
                 "shasum": ""
             },
             "require": {
@@ -82,28 +82,24 @@
                     "src/events"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "role": "Contributers",
                     "name": "WhatsApi Contributing Team",
-                    "homepage": "https://github.com/mgp25/WhatsAPI-Official/graphs/contributors"
+                    "homepage": "https://github.com/mgp25/WhatsAPI-Official/graphs/contributors",
+                    "role": "Contributers"
                 }
             ],
             "description": "PHP Interface for WhatsApp Messenger",
             "keywords": [
                 "TextMessage",
-                "WhatsApp",
-                "sms"
+                "sms",
+                "whatsapp"
             ],
-            "support": {
-                "issues": "https://github.com/mgp25/WhatsAPI-Official/issues",
-                "wiki": "https://github.com/mgp25/WhatsAPI-Official/wiki",
-                "source": "https://github.com/mgp25/WhatsAPI-Official"
-            },
-            "time": "2014-10-29 07:31:20"
+            "time": "2014-10-30 10:41:59"
         },
         {
             "name": "thomasvargiu/tmv-whatsapi",
@@ -256,7 +252,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "mgp25/whatsapi": 20
     },
