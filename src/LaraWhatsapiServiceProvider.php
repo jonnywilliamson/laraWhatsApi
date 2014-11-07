@@ -2,8 +2,11 @@
 
 use App;
 use Config;
+use Event;
+use File;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use MGP25WhatapiEvents;
 use Tmv\WhatsApi\Client;
 use Tmv\WhatsApi\Entity\Identity;
 use Tmv\WhatsApi\Entity\Phone;
@@ -12,7 +15,6 @@ use Tmv\WhatsApi\Service\LocalizationService;
 use Tmv\WhatsApi\Event\MessageReceivedEvent;
 use Tmv\WhatsApi\Message\Received;
 use WhatsProt;
-use Zend\EventManager\Event;
 
 class LaraWhatsapiServiceProvider extends ServiceProvider {
 
@@ -85,8 +87,12 @@ class LaraWhatsapiServiceProvider extends ServiceProvider {
             $client = new Client($identity);
             $client->setChallengeDataFilepath($nextChallengeFile);
 
-
-            // Attaching events...
+//TODO
+//            // Attaching events...
+//            if (class_exists('TMVWhatapiEvents'))
+//            {
+//                $events = new TMVWhatapiEvents();
+//            }
             //TODO I don't want to attach events here, but this is just for demo.
             $client->getEventManager()->attach(
                 'onMessageReceived',
@@ -166,10 +172,19 @@ class LaraWhatsapiServiceProvider extends ServiceProvider {
             $number    = Config::get("larawhatsapi::accounts.$account.number");
             $userIdent = Config::get("larawhatsapi::accounts.$account.identity");
             $nextChallengeFile = Config::get("larawhatsapi::nextChallengeDir") . "/" . $number . "-NextChallenge.dat";
+            $identityFileNoDat = Config::get("larawhatsapi::nextChallengeDir") . "/" . $number . "-Identity";
+            $identityFileDat = $identityFileNoDat.'.dat';
+            if( ! File::exists($identityFileDat) || File::get($identityFileDat) !== $userIdent){
+                File::put($identityFileDat, $userIdent);
+            }
 
-            $whatsProt =  new WhatsProt($number, $userIdent, $nickName, $debug);
+            $whatsProt =  new WhatsProt($number, $identityFileNoDat, $nickName, $debug);
             $whatsProt->setChallengeName($nextChallengeFile);
-
+            if (class_exists('MGP25WhatapiEvents'))
+            {
+                $events = new MGP25WhatapiEvents($whatsProt);
+                $events->setEventsToListenFor($events->activeEvents);
+            }
             return $whatsProt;
         });
 

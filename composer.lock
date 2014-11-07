@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mgp25/WhatsAPI-Official.git",
-                "reference": "69a93eb7ad0875cc68efa3ca982f0f2f52124a66"
+                "reference": "90e0a5f75f87e77bb3eab6a36db10beba5cc0a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mgp25/WhatsAPI-Official/zipball/69a93eb7ad0875cc68efa3ca982f0f2f52124a66",
-                "reference": "69a93eb7ad0875cc68efa3ca982f0f2f52124a66",
+                "url": "https://api.github.com/repos/mgp25/WhatsAPI-Official/zipball/90e0a5f75f87e77bb3eab6a36db10beba5cc0a5c",
+                "reference": "90e0a5f75f87e77bb3eab6a36db10beba5cc0a5c",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
                 "sms",
                 "whatsapp"
             ],
-            "time": "2014-10-30 10:41:59"
+            "time": "2014-11-01 21:57:06"
         },
         {
             "name": "thomasvargiu/tmv-whatsapi",
