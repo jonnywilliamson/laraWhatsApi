@@ -87,38 +87,44 @@ class LaraWhatsapiServiceProvider extends ServiceProvider {
             $client = new Client($identity);
             $client->setChallengeDataFilepath($nextChallengeFile);
 
-//TODO
-//            // Attaching events...
-//            if (class_exists('TMVWhatapiEvents'))
-//            {
-//                $events = new TMVWhatapiEvents();
-//            }
-            //TODO I don't want to attach events here, but this is just for demo.
-            $client->getEventManager()->attach(
-                'onMessageReceived',
-                function (MessageReceivedEvent $e)
-                {
-                    $message = $e->getMessage();
-                    echo str_repeat('-', 80) . PHP_EOL;
-                    echo '** MESSAGE RECEIVED **' . PHP_EOL;
-                    echo sprintf('From: %s', $message->getFrom()) . PHP_EOL;
-                    if ($message->isFromGroup())
-                    {
-                        echo sprintf('Group: %s', $message->getGroupId()) . PHP_EOL;
-                    }
-                    echo sprintf('Date: %s', $message->getDateTime()->format('Y-m-d H:i:s')) . PHP_EOL;
+            // Attaching events...
+            if (class_exists('MGP25WhatapiEvents'))
+            {
+                $events = new MGP25WhatapiEvents($client);
 
-                    if ($message instanceof Received\MessageText)
+                foreach($events->activeEvents as $eventName){
+                    $client->getEventManager()->attach($eventName, function() use ($events, $eventName)
                     {
-                        echo PHP_EOL;
-                        echo sprintf('%s', $message->getBody()) . PHP_EOL;
-                    } elseif ($message instanceof Received\MessageMedia)
-                    {
-                        echo sprintf('Type: %s', $message->getMedia()->getType()) . PHP_EOL;
-                    }
-                    echo str_repeat('-', 80) . PHP_EOL;
+                        ($events->$eventName());
+                    });
                 }
-            );
+            }
+//            TODO I don't want to attach events here, but this is just for demo.
+//            $client->getEventManager()->attach(
+//                'onMessageReceived',
+//                function (MessageReceivedEvent $e)
+//                {
+//                    $message = $e->getMessage();
+//                    echo str_repeat('-', 80) . PHP_EOL;
+//                    echo '** MESSAGE RECEIVED **' . PHP_EOL;
+//                    echo sprintf('From: %s', $message->getFrom()) . PHP_EOL;
+//                    if ($message->isFromGroup())
+//                    {
+//                        echo sprintf('Group: %s', $message->getGroupId()) . PHP_EOL;
+//                    }
+//                    echo sprintf('Date: %s', $message->getDateTime()->format('Y-m-d H:i:s')) . PHP_EOL;
+//
+//                    if ($message instanceof Received\MessageText)
+//                    {
+//                        echo PHP_EOL;
+//                        echo sprintf('%s', $message->getBody()) . PHP_EOL;
+//                    } elseif ($message instanceof Received\MessageMedia)
+//                    {
+//                        echo sprintf('Type: %s', $message->getMedia()->getType()) . PHP_EOL;
+//                    }
+//                    echo str_repeat('-', 80) . PHP_EOL;
+//                }
+//            );
 
 
             // Debug events
@@ -142,6 +148,7 @@ class LaraWhatsapiServiceProvider extends ServiceProvider {
                 );
             }
 
+            dd('done');
             return $client;
         });
 
