@@ -167,7 +167,7 @@ class LaraWhatsapiServiceProvider extends ServiceProvider {
             $userIdent = Config::get("larawhatsapi::accounts.$account.identity");
             $nextChallengeFile = Config::get("larawhatsapi::nextChallengeDir") . "/" . $number . "-NextChallenge.dat";
 
-            $whatsProt =  new WhatsProt($number, $userIdent, $nickName, $debug);
+            $whatsProt =  new WhatsProt($number, $nickName, $debug, $userIdent);
             $whatsProt->setChallengeName($nextChallengeFile);
 
             return $whatsProt;
