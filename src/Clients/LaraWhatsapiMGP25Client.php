@@ -16,6 +16,8 @@ class LaraWhatsapiMGP25Client implements SMSMessageInterface{
      */
     protected $whatsProt;
 
+    public $messages;
+
     /**
      * @param WhatsProt $whatsProt
      */
@@ -29,14 +31,42 @@ class LaraWhatsapiMGP25Client implements SMSMessageInterface{
     public function sendMessage($to, $message)
     {
         $this->connectAndLogin();
+        $this->whatsProt->eventManager()->bind('onGetMessage', array($this, 'processReceivedMessage'));
         $this->whatsProt->sendMessageComposing($to);
         $this->whatsProt->sendMessage($to, $message);
         $this->logoutAndDisconnect();
+        if (!empty($this->messages))
+            return $this->messages;
+    }
+
+    public function sendSync($r)
+    {
+        $this->connectAndLogin();
+        $this->whatsProt->eventManager()->bind('onGetMessage', array($this, 'processReceivedMessage'));
+        $this->whatsProt->sendSync($r);
+        $this->logoutAndDisconnect();
+        if (!empty($this->messages))
+            return $this->messages;
     }
 
     public function checkForNewMessages()
     {
-        // TODO: Implement checkForNewMessages() method.
+        $this->connectAndLogin();
+        $this->whatsProt->eventManager()->bind('onGetMessage', array($this, 'processReceivedMessage'));
+        $this->whatsProt->pollMessage();
+        $this->logoutAndDisconnect();
+        return $this->messages;
+    }
+
+    public function processReceivedMessage($phone, $from, $id, $type, $time, $name, $data = null)
+    {
+        $matches = null;
+        $time = date('Y-m-d H:i:s', $time);
+        if (preg_match('/\d*/', $from, $matches)) {
+            $from = $matches[0];
+        }
+        $messages = array('phone' => $phone, 'from' => $from, 'id' => $id, 'type' => $type, 'time' => $time, 'name' => $name, 'data' => $data);
+        $this->messages[] = $messages;
     }
 
     protected function connectAndLogin()
